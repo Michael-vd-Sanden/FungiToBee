@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColourChange : MonoBehaviour
+public class Hexagons : MonoBehaviour
 {
     SpriteRenderer sprite;
     [SerializeField] private float Timer;
@@ -15,10 +15,6 @@ public class ColourChange : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            Timer = Random.Range(5f, 20f);
-        }
 
         Timer -= Time.deltaTime;
         if(Timer > 12)
@@ -36,5 +32,16 @@ public class ColourChange : MonoBehaviour
             sprite.color = Color.black;
         }
 
+    }
+
+    public void startTimer()
+    {
+        Timer = Random.Range(5f, 20f);
+        Debug.Log("start");
+    }
+
+    private void OnMouseDown()
+    {
+        startTimer();
     }
 }
