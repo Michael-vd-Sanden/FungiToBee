@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8434220607112260089}
   m_Layer: 0
   m_Name: FlowerTile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: {fileID: 8434220607112260089}
+  gameManager: {fileID: 0}
+  list: {fileID: 0}
   tile3: {fileID: 6745976095031145810}
   tile2: {fileID: 5706643022608784072}
   tile1: {fileID: 3387930171221585966}
@@ -166,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 0
+  startingStage: 4
 --- !u!1 &3387930171221585966
 GameObject:
   m_ObjectHideFlags: 0

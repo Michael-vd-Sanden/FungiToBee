@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4014938360464068234}
   m_Layer: 0
   m_Name: BushTile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,6 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: {fileID: 4014938360464068234}
+  gameManager: {fileID: 0}
+  list: {fileID: 0}
   tile3: {fileID: 264625115926901417}
   tile2: {fileID: 4921082417118481133}
   tile1: {fileID: 6737099287735903492}
@@ -330,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 0
+  startingStage: 4
 --- !u!1 &6737099287735903492
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 public class HexagonChange : MonoBehaviour
 {
     public Stage stage;
+    [SerializeField] private GameObject gameManager;
+    public TileList list;
 
     [SerializeField] private GameObject tile3;
     [SerializeField] private GameObject tile2;
@@ -17,41 +19,39 @@ public class HexagonChange : MonoBehaviour
     private float maxActivationTimer = 2f;
     private float activationTimer;
 
-    private float timeStage3 = 12;
-    private float timeStage2 = 8;
-    private float timeStage1 = 4;
-    private float timeDirt = 0;
-
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        list = gameManager.GetComponent<TileList>();
         activationTimer = maxActivationTimer;
         CheckStage();
     }
     void Update()
     {
-        WitherTimer -= Time.deltaTime;
-        if (WitherTimer > timeStage3)
-        {
-            stage.SetStage(0);
-        }
-        if (WitherTimer < timeStage2)
-        {
-            stage.SetStage(1);
-        }
-        if (WitherTimer < timeStage1)
-        {
-            stage.SetStage(2);
-        }
-        if (WitherTimer < timeDirt)
-        {
-            stage.SetStage(3);
-        }
+    }
+
+    IEnumerator Wither()
+    {
+        stage.SetStage(0);
+        CheckStage();
+
+        yield return new WaitForSeconds(WitherTimer);
+        stage.SetStage(1);
+        CheckStage();
+
+        yield return new WaitForSeconds(WitherTimer);
+        stage.SetStage(2);
+        CheckStage();
+
+        yield return new WaitForSeconds(WitherTimer);
+        stage.SetStage(3);
         CheckStage();
     }
 
     public void startWitherTimer()
     {
         WitherTimer = Random.Range(5f, 20f);
+        StartCoroutine(Wither());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +66,7 @@ public class HexagonChange : MonoBehaviour
         if(activationTimer < 0)
         {
             Debug.Log("Pressed");
+            list.GetSurrounding(this.transform.position);
             startWitherTimer();
             CheckStage();
             activationTimer = maxActivationTimer;
@@ -97,7 +98,7 @@ public class HexagonChange : MonoBehaviour
                 tileDirt.SetActive(true);
                 break;
             case 4:
-                hexCollider.enabled = true;
+                hexCollider.enabled = false;
                 SetSpriteToFalse();
                 tileMycelium.SetActive(true);
                 break;

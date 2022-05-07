@@ -9,12 +9,12 @@ public class Stage : MonoBehaviour
 
     public void Start()
     {
-        stage = startingStage;
+        this.stage = startingStage;
     }
 
     public void SetStage(int newStage)
     {
-        stage = newStage;
+        this.stage = newStage;
     }
 
     public int GetStage()
