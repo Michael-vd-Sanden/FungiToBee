@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class HexagonChange : MonoBehaviour
 {
+    public enum StateEnum { Blossum, Wither1, Wither2, Dirt, Mycelium};
+    public StateEnum state;
     public Stage stage;
     [SerializeField] private GameObject gameManager;
-    public TileList list;
 
     [SerializeField] private GameObject tile3;
     [SerializeField] private GameObject tile2;
@@ -19,15 +20,18 @@ public class HexagonChange : MonoBehaviour
     private float maxActivationTimer = 2f;
     private float activationTimer;
 
+    public List<HexagonChange> tilesNextTo;
+
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
-        list = gameManager.GetComponent<TileList>();
         activationTimer = maxActivationTimer;
+        WitherTimer = Random.Range(5f, 20f);
         CheckStage();
     }
     void Update()
     {
+        CheckStage();
     }
 
     IEnumerator Wither()
@@ -66,8 +70,8 @@ public class HexagonChange : MonoBehaviour
         if(activationTimer < 0)
         {
             Debug.Log("Pressed");
-            list.GetSurrounding(this.transform.position);
-            startWitherTimer();
+            // startWitherTimer();
+            SetNextTiles();
             CheckStage();
             activationTimer = maxActivationTimer;
         }
@@ -75,34 +79,95 @@ public class HexagonChange : MonoBehaviour
 
     public void CheckStage()
     {
-        switch (stage.GetStage())
+        switch (state)
         {
-            case 0:
-                hexCollider.enabled = true;
-                SetSpriteToFalse();
-                tile3.SetActive(true);
+            case StateEnum.Blossum: StartCoroutine(Blossum());
                 break;
-            case 1:
-                hexCollider.enabled = false;
-                SetSpriteToFalse();
-                tile2.SetActive(true);
+            case StateEnum.Wither1: StartCoroutine(Wither1());
                 break;
-            case 2:
-                hexCollider.enabled = false;
-                SetSpriteToFalse();
-                tile1.SetActive(true);
+            case StateEnum.Wither2: StartCoroutine(Wither2());
                 break;
-            case 3:
-                hexCollider.enabled = false;
-                SetSpriteToFalse();
-                tileDirt.SetActive(true);
+            case StateEnum.Dirt: StartCoroutine(Dirt());
                 break;
-            case 4:
-                hexCollider.enabled = false;
-                SetSpriteToFalse();
-                tileMycelium.SetActive(true);
+            case StateEnum.Mycelium: StartCoroutine(Mycelium());
                 break;
         }
+        //switch (stage.GetStage())
+        //{
+        //    case 0:
+        //        hexCollider.enabled = true;
+        //        SetSpriteToFalse();
+        //        tile3.SetActive(true);
+        //        break;
+        //    case 1:
+        //        hexCollider.enabled = false;
+        //        SetSpriteToFalse();
+        //        tile2.SetActive(true);
+        //        break;
+        //    case 2:
+        //        hexCollider.enabled = false;
+        //        SetSpriteToFalse();
+        //        tile1.SetActive(true);
+        //        break;
+        //    case 3:
+        //        hexCollider.enabled = false;
+        //        SetSpriteToFalse();
+        //        tileDirt.SetActive(true);
+        //        break;
+        //    case 4:
+        //        hexCollider.enabled = false;
+        //        SetSpriteToFalse();
+        //        tileMycelium.SetActive(true);
+        //        break;
+        //}
+    }
+
+    private IEnumerator Blossum()
+    {
+        SetSpriteToFalse();
+        tile3.SetActive(true);
+        hexCollider.enabled = true;
+
+        yield return new WaitForSeconds(WitherTimer);
+        state = StateEnum.Wither1;
+    }
+
+    private IEnumerator Wither1()
+    {
+        SetSpriteToFalse();
+        tile2.SetActive(true);
+        hexCollider.enabled = false;
+
+        yield return new WaitForSeconds(WitherTimer);
+        state = StateEnum.Wither2;
+    }
+
+    private IEnumerator Wither2()
+    {
+        SetSpriteToFalse();
+        tile1.SetActive(true);
+        hexCollider.enabled = false;
+
+        yield return new WaitForSeconds(WitherTimer);
+        state = StateEnum.Dirt;
+    }
+
+    private IEnumerator Dirt()
+    {
+        SetSpriteToFalse();
+        tileDirt.SetActive(true);
+        hexCollider.enabled = false;
+
+        yield return null;
+    }
+
+    private IEnumerator Mycelium()
+    {
+        SetSpriteToFalse();
+        tileMycelium.SetActive(true);
+        hexCollider.enabled = false;
+
+        yield return null;
     }
 
     public void SetSpriteToFalse()
@@ -112,5 +177,15 @@ public class HexagonChange : MonoBehaviour
         tile1.SetActive(false);
         tileDirt.SetActive(false);
         tileMycelium.SetActive(false);
+    }
+
+    public void SetNextTiles()
+    {
+        foreach(HexagonChange h in tilesNextTo)
+        {
+            h.state = StateEnum.Blossum;
+            //h.stage.SetStage(0);
+            //h.startWitherTimer();
+        }
     }
 }

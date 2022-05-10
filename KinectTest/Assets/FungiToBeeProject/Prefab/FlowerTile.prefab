@@ -145,9 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad2b2f730fa4a846b93b70ef209dd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 4
   stage: {fileID: 8434220607112260089}
   gameManager: {fileID: 0}
-  list: {fileID: 0}
   tile3: {fileID: 6745976095031145810}
   tile2: {fileID: 5706643022608784072}
   tile1: {fileID: 3387930171221585966}
@@ -155,6 +155,7 @@ MonoBehaviour:
   tileMycelium: {fileID: 7740674243751746369}
   hexCollider: {fileID: 2681637826630608862}
   WitherTimer: 0
+  tilesNextTo: []
 --- !u!114 &8434220607112260089
 MonoBehaviour:
   m_ObjectHideFlags: 0
