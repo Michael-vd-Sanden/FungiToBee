@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad2b2f730fa4a846b93b70ef209dd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 4
+  state: 2
   stage: {fileID: 8434220607112260089}
   gameManager: {fileID: 0}
   tile3: {fileID: 6745976095031145810}

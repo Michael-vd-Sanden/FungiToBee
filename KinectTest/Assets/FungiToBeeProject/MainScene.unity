@@ -2245,7 +2245,7 @@ MonoBehaviour:
   DisplaySkeletonLines: 0
   DisplayMapsWidthPercent: 20
   SensorHeight: 1
-  SensorAngle: 20
+  SensorAngle: 0
   MinUserDistance: 1
   MaxUserDistance: 0
   DetectClosestUser: 1
@@ -4548,6 +4548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1835458123}
   - component: {fileID: 1835458122}
+  - component: {fileID: 1835458124}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -4581,6 +4582,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835458124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835458121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169c43868dc9cf04db95b86dafa8266f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1879156291
 PrefabInstance:
   m_ObjectHideFlags: 0

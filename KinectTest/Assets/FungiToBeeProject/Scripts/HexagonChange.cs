@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HexagonChange : MonoBehaviour
 {
-    public enum StateEnum { Blossum, Wither1, Wither2, Dirt, Mycelium};
+    public enum StateEnum {Blossum, Wither, Mycelium};
     public StateEnum state;
     public Stage stage;
     [SerializeField] private GameObject gameManager;
@@ -27,35 +27,11 @@ public class HexagonChange : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         activationTimer = maxActivationTimer;
         WitherTimer = Random.Range(5f, 20f);
-        CheckStage();
+        CheckState();
     }
     void Update()
     {
-        CheckStage();
-    }
-
-    IEnumerator Wither()
-    {
-        stage.SetStage(0);
-        CheckStage();
-
-        yield return new WaitForSeconds(WitherTimer);
-        stage.SetStage(1);
-        CheckStage();
-
-        yield return new WaitForSeconds(WitherTimer);
-        stage.SetStage(2);
-        CheckStage();
-
-        yield return new WaitForSeconds(WitherTimer);
-        stage.SetStage(3);
-        CheckStage();
-    }
-
-    public void startWitherTimer()
-    {
-        WitherTimer = Random.Range(5f, 20f);
-        StartCoroutine(Wither());
+        //CheckState();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,105 +46,107 @@ public class HexagonChange : MonoBehaviour
         if(activationTimer < 0)
         {
             Debug.Log("Pressed");
-            // startWitherTimer();
             SetNextTiles();
-            CheckStage();
+            //CheckState();
             activationTimer = maxActivationTimer;
         }
     }
 
-    public void CheckStage()
+    public void CheckState()
     {
         switch (state)
         {
-            case StateEnum.Blossum: StartCoroutine(Blossum());
+            case StateEnum.Blossum: BlossumState();
                 break;
-            case StateEnum.Wither1: StartCoroutine(Wither1());
+            case StateEnum.Wither:;
                 break;
-            case StateEnum.Wither2: StartCoroutine(Wither2());
-                break;
-            case StateEnum.Dirt: StartCoroutine(Dirt());
-                break;
-            case StateEnum.Mycelium: StartCoroutine(Mycelium());
+            case StateEnum.Mycelium: MyceliumState();
                 break;
         }
-        //switch (stage.GetStage())
-        //{
-        //    case 0:
-        //        hexCollider.enabled = true;
-        //        SetSpriteToFalse();
-        //        tile3.SetActive(true);
-        //        break;
-        //    case 1:
-        //        hexCollider.enabled = false;
-        //        SetSpriteToFalse();
-        //        tile2.SetActive(true);
-        //        break;
-        //    case 2:
-        //        hexCollider.enabled = false;
-        //        SetSpriteToFalse();
-        //        tile1.SetActive(true);
-        //        break;
-        //    case 3:
-        //        hexCollider.enabled = false;
-        //        SetSpriteToFalse();
-        //        tileDirt.SetActive(true);
-        //        break;
-        //    case 4:
-        //        hexCollider.enabled = false;
-        //        SetSpriteToFalse();
-        //        tileMycelium.SetActive(true);
-        //        break;
-        //}
     }
 
-    private IEnumerator Blossum()
+    //public void CheckStage()
+    //{
+    //    switch (state)
+    //    {
+    //        case StateEnum.Blossum: StartCoroutine(Blossum());
+    //            break;
+    //        case StateEnum.Wither: StartCoroutine(Wither());
+    //            break;
+    //        case StateEnum.Mycelium: StartCoroutine(Mycelium());
+    //            break;
+    //    }
+    //}
+
+    private void BlossumState()
     {
         SetSpriteToFalse();
         tile3.SetActive(true);
         hexCollider.enabled = true;
-
-        yield return new WaitForSeconds(WitherTimer);
-        state = StateEnum.Wither1;
+        Invoke("Wither1State", WitherTimer);
     }
 
-    private IEnumerator Wither1()
+    private void Wither1State()
     {
-        SetSpriteToFalse();
+        tile3.SetActive(false);
         tile2.SetActive(true);
         hexCollider.enabled = false;
-
-        yield return new WaitForSeconds(WitherTimer);
-        state = StateEnum.Wither2;
+        Invoke("Wither2State", WitherTimer);
     }
 
-    private IEnumerator Wither2()
+    private void Wither2State()
     {
-        SetSpriteToFalse();
+        tile2.SetActive(false);
         tile1.SetActive(true);
-        hexCollider.enabled = false;
-
-        yield return new WaitForSeconds(WitherTimer);
-        state = StateEnum.Dirt;
+        Invoke("DirtState", WitherTimer);
     }
 
-    private IEnumerator Dirt()
+    private void DirtState()
     {
-        SetSpriteToFalse();
+        tile1.SetActive(false);
         tileDirt.SetActive(true);
-        hexCollider.enabled = false;
-
-        yield return null;
     }
 
-    private IEnumerator Mycelium()
+    private void MyceliumState()
     {
         SetSpriteToFalse();
         tileMycelium.SetActive(true);
         hexCollider.enabled = false;
-
-        yield return null;
     }
+
+    //private IEnumerator Blossum()
+    //{
+    //    SetSpriteToFalse();
+    //    tile3.SetActive(true);
+    //    hexCollider.enabled = true;
+
+    //    yield return new WaitForSeconds(WitherTimer);
+    //    state = StateEnum.Wither;
+    //}
+
+    //private IEnumerator Wither()
+    //{
+    //    tile3.SetActive(false);
+    //    tile2.SetActive(true);
+    //    hexCollider.enabled = false;
+
+    //    yield return new WaitForSeconds(WitherTimer);
+    //    tile2.SetActive(false);
+    //    tile1.SetActive(true);
+
+    //    yield return new WaitForSeconds(WitherTimer);
+    //    tile1.SetActive(false);
+    //    tileDirt.SetActive(true);
+    //}
+
+    //private IEnumerator Mycelium()
+    //{
+    //    SetSpriteToFalse();
+    //    tileMycelium.SetActive(true);
+    //    hexCollider.enabled = false;
+
+    //    yield return null;
+    //}
 
     public void SetSpriteToFalse()
     {
@@ -183,9 +161,8 @@ public class HexagonChange : MonoBehaviour
     {
         foreach(HexagonChange h in tilesNextTo)
         {
-            h.state = StateEnum.Blossum;
-            //h.stage.SetStage(0);
-            //h.startWitherTimer();
+            //h.state = StateEnum.Blossum;
+            h.BlossumState();
         }
     }
 }
