@@ -34,24 +34,6 @@ public class HexagonChange : MonoBehaviour
         //CheckState();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Entered");
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        activationTimer -= Time.deltaTime;
-
-        if(activationTimer < 0)
-        {
-            Debug.Log("Pressed");
-            SetNextTiles();
-            //CheckState();
-            activationTimer = maxActivationTimer;
-        }
-    }
-
     public void CheckState()
     {
         switch (state)
@@ -64,19 +46,6 @@ public class HexagonChange : MonoBehaviour
                 break;
         }
     }
-
-    //public void CheckStage()
-    //{
-    //    switch (state)
-    //    {
-    //        case StateEnum.Blossum: StartCoroutine(Blossum());
-    //            break;
-    //        case StateEnum.Wither: StartCoroutine(Wither());
-    //            break;
-    //        case StateEnum.Mycelium: StartCoroutine(Mycelium());
-    //            break;
-    //    }
-    //}
 
     private void BlossumState()
     {
@@ -114,40 +83,6 @@ public class HexagonChange : MonoBehaviour
         hexCollider.enabled = false;
     }
 
-    //private IEnumerator Blossum()
-    //{
-    //    SetSpriteToFalse();
-    //    tile3.SetActive(true);
-    //    hexCollider.enabled = true;
-
-    //    yield return new WaitForSeconds(WitherTimer);
-    //    state = StateEnum.Wither;
-    //}
-
-    //private IEnumerator Wither()
-    //{
-    //    tile3.SetActive(false);
-    //    tile2.SetActive(true);
-    //    hexCollider.enabled = false;
-
-    //    yield return new WaitForSeconds(WitherTimer);
-    //    tile2.SetActive(false);
-    //    tile1.SetActive(true);
-
-    //    yield return new WaitForSeconds(WitherTimer);
-    //    tile1.SetActive(false);
-    //    tileDirt.SetActive(true);
-    //}
-
-    //private IEnumerator Mycelium()
-    //{
-    //    SetSpriteToFalse();
-    //    tileMycelium.SetActive(true);
-    //    hexCollider.enabled = false;
-
-    //    yield return null;
-    //}
-
     public void SetSpriteToFalse()
     {
         tile3.SetActive(false);
@@ -161,7 +96,6 @@ public class HexagonChange : MonoBehaviour
     {
         foreach(HexagonChange h in tilesNextTo)
         {
-            //h.state = StateEnum.Blossum;
             h.BlossumState();
         }
     }

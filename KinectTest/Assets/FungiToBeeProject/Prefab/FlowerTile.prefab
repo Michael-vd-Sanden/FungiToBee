@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2681637826630608862}
   - component: {fileID: 2681637826630608861}
   - component: {fileID: 8434220607112260089}
+  - component: {fileID: 844991525131122153}
   m_Layer: 0
   m_Name: FlowerTile
   m_TagString: Tile
@@ -131,8 +132,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7015482, y: 1.167922, z: 3.294378}
-  m_Center: {x: 0.002035439, y: -0.025431156, z: -1.5471898}
+  m_Size: {x: 0.7015482, y: 1.167922, z: 11.592744}
+  m_Center: {x: 0.002035439, y: -0.025431156, z: -5.6963725}
 --- !u!114 &2681637826630608861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +171,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 0
   startingStage: 4
+--- !u!114 &844991525131122153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681637826630608859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6479670d2e850742a2bab29522b225f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3387930171221585966
 GameObject:
   m_ObjectHideFlags: 0
