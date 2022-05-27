@@ -17,7 +17,7 @@ public class MenuStart : MonoBehaviour
     IEnumerator OnTriggerEnter(Collider collider)
     {
         collided = true;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         if (collided)
         {
             loadScenes.LoadMainScene();

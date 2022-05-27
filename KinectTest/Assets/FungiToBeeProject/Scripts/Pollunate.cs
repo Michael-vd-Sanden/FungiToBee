@@ -6,9 +6,15 @@ public class Pollunate : MonoBehaviour
 {
     bool collided;
     private HexagonChange change;
+    public enum tileEnum {Flower, Bush};
+    public tileEnum tile;
+    public Score score;
+    [SerializeField] private GameObject gameManager;
 
     private void Awake()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        score = gameManager.GetComponent<Score>();
         change = GetComponent<HexagonChange>();
     }
     IEnumerator OnTriggerEnter(Collider collider)
@@ -18,10 +24,32 @@ public class Pollunate : MonoBehaviour
         if (collided)
         {
             change.SetNextTiles();
+            if (collider.name == "BeePlayer")
+            {
+                if (tile == tileEnum.Bush)
+                {
+                    score.upScoreByOne("Bee");
+                }
+                else if(tile == tileEnum.Flower)
+                {
+                    score.upScoreByTwo("Bee");
+                }
+            }
+            if (collider.name == "ButterflyPlayer")
+            {
+                if (tile == tileEnum.Bush)
+                {
+                    score.upScoreByTwo("Butterfly");
+                }
+                else if (tile == tileEnum.Flower)
+                {
+                    score.upScoreByOne("Butterfly");
+                }
+            }
         }
     }
 
-    void OnCollisionExit()
+    public void OnTriggerExit()
     {
         collided = false;
     }

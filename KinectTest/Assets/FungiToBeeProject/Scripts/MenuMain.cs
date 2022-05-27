@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuQuit : MonoBehaviour
+public class MenuMain : MonoBehaviour
 {
     bool collided;
     private LoadScenes loadScenes;
@@ -17,10 +17,10 @@ public class MenuQuit : MonoBehaviour
     IEnumerator OnTriggerEnter(Collider collider)
     {
         collided = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         if (collided)
         {
-            loadScenes.ExitProgram();
+            loadScenes.LoadStartScreen();
         }
     }
 

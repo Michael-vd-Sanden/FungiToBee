@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6479670d2e850742a2bab29522b225f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tile: 1
 --- !u!1 &6737099287735903492
 GameObject:
   m_ObjectHideFlags: 0

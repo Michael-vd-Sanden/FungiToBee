@@ -26,6 +26,12 @@ public class LoadScenes : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
+    public void LoadScoreScene()
+    {
+        main.transform.SetParent(cameraParent.transform);
+        SceneManager.LoadScene("ScoreScene");
+    }
+
     public void ExitProgram()
     {
         Application.Quit();

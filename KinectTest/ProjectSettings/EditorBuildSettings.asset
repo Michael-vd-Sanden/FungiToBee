@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FungiToBeeProject/StartingScreen.unity
+    path: Assets/FungiToBeeProject/Scenes/StartingScreen.unity
     guid: 9594ac15bc874e34c9d9c53c1b01f626
   - enabled: 1
-    path: Assets/FungiToBeeProject/ExplanationScene.unity
+    path: Assets/FungiToBeeProject/Scenes/ExplanationScene.unity
     guid: 3aa1119d96b50ae49920e53bb77951ff
   - enabled: 1
-    path: Assets/FungiToBeeProject/MainScene.unity
+    path: Assets/FungiToBeeProject/Scenes/MainScene.unity
     guid: 2193b50916f8eb140b56f97ed112e928
+  - enabled: 1
+    path: Assets/FungiToBeeProject/Scenes/ScoreScene.unity
+    guid: 3aecc8be014d0b14e9111c305fbb4b07
   m_configObjects: {}

@@ -17,7 +17,7 @@ public class Wincondition : MonoBehaviour
         if (CheckIfGreen())
         {
             Debug.Log("WON!");
-            loadScenes.LoadStartScreen();
+            loadScenes.LoadScoreScene();
         }
     }
 
