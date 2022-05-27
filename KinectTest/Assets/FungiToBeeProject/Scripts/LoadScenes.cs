@@ -5,18 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class LoadScenes : MonoBehaviour
 {
+    public Camera main;
+    public GameObject cameraParent;
+
     public void LoadStartScreen()
     {
-        SceneManager.LoadScene("startingScene");
+        main.transform.SetParent(cameraParent.transform);
+        SceneManager.LoadScene("StartingScreen");
     }
 
     public void LoadExplanationScene()
     {
+        main.transform.SetParent(cameraParent.transform);
         SceneManager.LoadScene("ExplanationScene");
     }
 
     public void LoadMainScene()
     {
+        main.transform.SetParent(cameraParent.transform);
         SceneManager.LoadScene("MainScene");
     }
 

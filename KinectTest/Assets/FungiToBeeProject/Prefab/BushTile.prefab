@@ -257,7 +257,6 @@ GameObject:
   - component: {fileID: 4981850269376102849}
   - component: {fileID: 4981850269376102851}
   - component: {fileID: 4981850269376102848}
-  - component: {fileID: 4014938360464068234}
   - component: {fileID: 8173048946536021765}
   m_Layer: 0
   m_Name: BushTile
@@ -310,9 +309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad2b2f730fa4a846b93b70ef209dd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 2
-  stage: {fileID: 4014938360464068234}
+  state: 3
   gameManager: {fileID: 0}
+  previousState: 0
+  isGreen: 0
   tile3: {fileID: 264625115926901417}
   tile2: {fileID: 4921082417118481133}
   tile1: {fileID: 6737099287735903492}
@@ -321,20 +321,6 @@ MonoBehaviour:
   hexCollider: {fileID: 4981850269376102851}
   WitherTimer: 0
   tilesNextTo: []
---- !u!114 &4014938360464068234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4981850269376102854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9f8d26f3b230344fa1789f2b559e3b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stage: 0
-  startingStage: 4
 --- !u!114 &8173048946536021765
 MonoBehaviour:
   m_ObjectHideFlags: 0
