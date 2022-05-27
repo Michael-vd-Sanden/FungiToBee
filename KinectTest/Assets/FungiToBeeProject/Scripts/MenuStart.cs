@@ -21,6 +21,8 @@ public class MenuStart : MonoBehaviour
         if (collided)
         {
             loadScenes.LoadMainScene();
+            Score.ScoreBee = 0;
+            Score.ScoreButterfly = 0;
         }
     }
 
