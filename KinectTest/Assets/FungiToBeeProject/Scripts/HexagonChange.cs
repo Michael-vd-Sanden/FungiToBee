@@ -10,6 +10,7 @@ public class HexagonChange : MonoBehaviour
     public int previousState;
 
     public bool isGreen;
+    public bool isDead;
 
     [SerializeField] private GameObject tile3;
     [SerializeField] private GameObject tile2;
@@ -24,11 +25,13 @@ public class HexagonChange : MonoBehaviour
 
     void Start()
     {
+        isGreen = false;
+        isDead = true;
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         WitherTimer = Random.Range(7f, 20f);
-        CheckState();
         previousState = 0;
-        isGreen = false;
+        CheckState();
+
     }
     void Update()
     {
@@ -38,6 +41,11 @@ public class HexagonChange : MonoBehaviour
     public bool GetisGreen()
     {
         return isGreen;
+    }
+
+    public bool GetisDead()
+    {
+        return isDead;
     }
 
     public void CheckState()
@@ -59,7 +67,7 @@ public class HexagonChange : MonoBehaviour
     {
         if (previousState == 0)
         {
-            
+            isDead = false;
             isGreen = true;
             SetSpriteToFalse();
             tile3.SetActive(true);
@@ -73,6 +81,7 @@ public class HexagonChange : MonoBehaviour
     {
         if (previousState == 1)
         {
+            isDead = false;
             isGreen = true;
             SetSpriteToFalse();
             tile2.SetActive(true);
@@ -86,6 +95,7 @@ public class HexagonChange : MonoBehaviour
     {
         if (previousState == 2)
         {
+            isDead = false;
             isGreen = true;
             SetSpriteToFalse();
             tile1.SetActive(true);
@@ -98,6 +108,7 @@ public class HexagonChange : MonoBehaviour
     {
         if (previousState == 3)
         {
+            isDead = true;
             isGreen = false;
             SetSpriteToFalse();
             tileDirt.SetActive(true);
@@ -107,6 +118,7 @@ public class HexagonChange : MonoBehaviour
 
     private void MyceliumState()
     {
+        isDead = true;
         isGreen = false;
         SetSpriteToFalse();
         tileMycelium.SetActive(true);

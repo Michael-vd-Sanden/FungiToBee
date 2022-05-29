@@ -20,10 +20,28 @@ public class LoadScenes : MonoBehaviour
         SceneManager.LoadScene("ExplanationScene");
     }
 
-    public void LoadMainScene()
+    public void LoadPlayer1()
     {
         main.transform.SetParent(cameraParent.transform);
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("ReadyPlayer1");
+    }
+
+    public void LoadPlayer2()
+    {
+        main.transform.SetParent(cameraParent.transform);
+        SceneManager.LoadScene("ReadyPlayer2");
+    }
+
+    public void LoadGameBee()
+    {
+        main.transform.SetParent(cameraParent.transform);
+        SceneManager.LoadScene("GameBee");
+    }
+
+    public void LoadGameButterfly()
+    {
+        main.transform.SetParent(cameraParent.transform);
+        SceneManager.LoadScene("GameButterfly");
     }
 
     public void LoadScoreScene()

@@ -20,7 +20,7 @@ public class MenuStart : MonoBehaviour
         yield return new WaitForSeconds(3);
         if (collided)
         {
-            loadScenes.LoadMainScene();
+            loadScenes.LoadPlayer1();
             Score.ScoreBee = 0;
             Score.ScoreButterfly = 0;
         }

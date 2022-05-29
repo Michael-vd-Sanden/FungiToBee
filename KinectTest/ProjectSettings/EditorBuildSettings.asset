@@ -12,9 +12,18 @@ EditorBuildSettings:
     path: Assets/FungiToBeeProject/Scenes/ExplanationScene.unity
     guid: 3aa1119d96b50ae49920e53bb77951ff
   - enabled: 1
-    path: Assets/FungiToBeeProject/Scenes/MainScene.unity
-    guid: 2193b50916f8eb140b56f97ed112e928
-  - enabled: 1
     path: Assets/FungiToBeeProject/Scenes/ScoreScene.unity
     guid: 3aecc8be014d0b14e9111c305fbb4b07
+  - enabled: 1
+    path: Assets/FungiToBeeProject/Scenes/ReadyPlayer1.unity
+    guid: 90f438d61ca5cfc48b5378a476832b41
+  - enabled: 1
+    path: Assets/FungiToBeeProject/Scenes/ReadyPlayer2.unity
+    guid: 2b3728ea4a3c26a47909400cf64bf109
+  - enabled: 1
+    path: Assets/FungiToBeeProject/Scenes/GameButterfly.unity
+    guid: 3d411a046715c5e4d8e5c3ec0b2ab172
+  - enabled: 1
+    path: Assets/FungiToBeeProject/Scenes/GameBee.unity
+    guid: 8cad867947f8f1940a6c9139ad6e2583
   m_configObjects: {}
