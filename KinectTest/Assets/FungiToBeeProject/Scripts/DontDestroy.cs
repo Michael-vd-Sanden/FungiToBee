@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DontDestroy : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < Object.FindObjectsOfType<DontDestroy>().Length; i++)
         {
@@ -17,6 +18,15 @@ public class DontDestroy : MonoBehaviour
             }
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject); 
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameButterfly") ||
+             SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameBee"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

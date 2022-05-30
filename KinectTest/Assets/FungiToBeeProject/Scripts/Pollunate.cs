@@ -26,25 +26,27 @@ public class Pollunate : MonoBehaviour
             change.SetNextTiles();
             if (collider.name == "BeePlayer")
             {
-                if (tile == tileEnum.Bush)
-                {
-                    score.upScoreByOne("Bee");
-                }
-                else if(tile == tileEnum.Flower)
-                {
-                    score.upScoreByTwo("Bee");
-                }
+                score.upScoreByOne("Bee");
+                //if (tile == tileEnum.Bush)
+                //{
+                //    score.upScoreByOne("Bee");
+                //}
+                //else if(tile == tileEnum.Flower)
+                //{
+                //    score.upScoreByTwo("Bee");
+                //}
             }
             if (collider.name == "ButterflyPlayer")
             {
-                if (tile == tileEnum.Bush)
-                {
-                    score.upScoreByTwo("Butterfly");
-                }
-                else if (tile == tileEnum.Flower)
-                {
-                    score.upScoreByOne("Butterfly");
-                }
+                score.upScoreByOne("Butterfly");
+                //if (tile == tileEnum.Bush)
+                //{
+                //    score.upScoreByTwo("Butterfly");
+                //}
+                //else if (tile == tileEnum.Flower)
+                //{
+                //    score.upScoreByOne("Butterfly");
+                //}
             }
         }
     }

@@ -32,12 +32,12 @@ public class Wincondition : MonoBehaviour
             Debug.Log("LOST");
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameBee"))
             {
-                Score.ScoreBee = 0;
+                Score.ScoreTileBee = 0;
                 loadScenes.LoadScoreScene();
             }
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameButterfly"))
             {
-                Score.ScoreButterfly = 0;
+                Score.ScoreTileButterfly = 0;
                 loadScenes.LoadPlayer2();
             }
         }

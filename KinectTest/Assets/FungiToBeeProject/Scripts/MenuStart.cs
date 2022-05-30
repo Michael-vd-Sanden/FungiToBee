@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuStart : MonoBehaviour
 {
@@ -20,9 +21,20 @@ public class MenuStart : MonoBehaviour
         yield return new WaitForSeconds(3);
         if (collided)
         {
-            loadScenes.LoadPlayer1();
-            Score.ScoreBee = 0;
-            Score.ScoreButterfly = 0;
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartingScreen"))
+            {
+                loadScenes.LoadExplanationScene();
+            }
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("ExplanationScene"))
+            {
+                loadScenes.LoadPlayer1();
+                Score.ScoreTileBee = 0;
+                Score.ScoreTileButterfly = 0;
+            }  
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("ScoreScene"))
+            {
+                loadScenes.LoadStartScreen();
+            }
         }
     }
 
