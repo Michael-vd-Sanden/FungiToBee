@@ -20,7 +20,7 @@ public class Pollunate : MonoBehaviour
     IEnumerator OnTriggerEnter(Collider collider)
     {
         collided = true;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         if (collided)
         {
             change.SetNextTiles();

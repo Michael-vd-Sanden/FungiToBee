@@ -28,10 +28,9 @@ public class HexagonChange : MonoBehaviour
         isGreen = false;
         isDead = true;
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
-        WitherTimer = Random.Range(8f, 18f);
-        previousState = 0;
+        WitherTimer = Random.Range(11f,22f);
         CheckState();
-
+        previousState = 0;
     }
     void Update()
     {
